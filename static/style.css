@@ -1,0 +1,163 @@
+
+/* RESET */
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+}
+
+/* MAIN LAYOUT */
+.layout {
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 250px;
+    background: #111827;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+}
+
+.sidebar h2 {
+    color: #22c55e;
+    margin-bottom: 20px;
+}
+
+/* FORM */
+.sidebar form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #1f2937;
+    color: white;
+}
+
+/* FILTER BOX */
+.filter-box {
+    margin-top: 20px;
+}
+
+.filter-box h4 {
+    margin-bottom: 10px;
+}
+
+/* FILTER BUTTONS */
+.filter-box button {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #1e293b;
+    color: white;
+    transition: 0.3s;
+}
+
+.filter-box button:hover {
+    background: #22c55e;
+}
+
+/* SEARCH BUTTON */
+.search-btn {
+    width: 100%;
+    padding: 10px;
+    background: #22c55e;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* MAIN AREA */
+.main {
+    margin-left: 270px;
+    padding: 30px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* CARD */
+.card {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    padding: 20px;
+    border-radius: 18px;
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border: 1px solid #22c55e;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.card h2 {
+    font-size: 16px;
+}
+
+.card p {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+/* BADGE */
+.badge {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: linear-gradient(90deg, #06b6d4, #22c55e);
+    color: black;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* BUTTON */
+.card a {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px;
+    background: #22c55e;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+/* NO DATA */
+.no-data {
+    color: gray;
+}
+.apply-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.apply-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 5px #rgb(236, 254, 243)
+}

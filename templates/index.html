@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Finder Pro</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- LEFT SIDEBAR FILTER -->
+    <div class="sidebar">
+
+        <h2>⚡ Filters</h2>
+
+        <form method="POST" action="/search">
+
+           <div class="search-box">
+
+    <input type="text" id="skillInput" name="skill" placeholder="💼 Search Skill">
+
+    <div id="suggestBox"></div>
+
+</div>
+
+            <input type="text" name="location" placeholder="📍 Location">
+
+
+            <button type="submit" class="search-btn">🔍 Search</button>
+
+        </form>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <h1>💼 Job Finder Pro</h1>
+
+        {% if jobs %}
+
+        <div class="grid">
+
+            {% for job in jobs %}
+            <div class="card">
+
+                <h2>{{ job.title }}</h2>
+                <p>🏢 {{ job.company }}</p>
+                <p>📍 {{ job.location }}</p>
+
+         {% if job.salary %}
+    <span class="badge">💰 {{ job.salary }}</span>
+{% else %}
+    <span class="badge" style="background:#64748b;">Salary Not Disclosed</span>
+{% endif %}
+
+               {% if job.url %}
+    <a href="{{ job.url }}" target="_blank" class="apply-btn">
+        Apply Now
+    </a>
+{% else %}
+    <span style="color:gray;">No link available</span>
+{% endif %}
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+            <p class="no-data">No jobs found 🔍 Try different filter</p>
+        {% endif %}
+
+    </div>
+
+</div>
+<script>
+const input = document.getElementById("skillInput");
+const box = document.getElementById("suggestBox");
+
+input.addEventListener("keyup", async function () {
+
+    let q = input.value;
+
+    if (q.length < 1) {
+        box.innerHTML = "";
+        return;
+    }
+
+    try {
+        let res = await fetch("/suggest?q=" + q);
+        let data = await res.json();
+
+        box.innerHTML = "";
+
+        if (data.suggestions.length === 0) {
+            box.innerHTML = "<div>No suggestions</div>";
+            return;
+        }
+
+        data.suggestions.forEach(item => {
+
+            let div = document.createElement("div");
+            div.innerHTML = "🔍 " + item;
+
+            div.onclick = function () {
+                input.value = item;
+                box.innerHTML = "";
+            };
+
+            box.appendChild(div);
+        });
+
+    } catch (err) {
+        console.log("Suggestion error:", err);
+    }
+
+});
+</script>
+</body>
+</html>
